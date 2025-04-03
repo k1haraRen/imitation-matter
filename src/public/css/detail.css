@@ -1,0 +1,263 @@
+.detail {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.detail__content {
+    display: flex;
+    width: 80%;
+    margin-top: 60px;
+}
+
+.detail__pic {
+    width: 50%;
+}
+
+.detail__item-pic {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    aspect-ratio: 1;
+    background: #d9d9d9;
+    font-size: 30px;
+}
+
+.detail__content-item {
+    width: 50%;
+}
+
+.item__name {
+    width: 100%;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.item__bland-name {
+    font-size: small;
+}
+
+.item__price {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.item__price-money {
+    font-size: xx-large;
+}
+
+.item__price-money::before {
+    content: "¥";
+    font-size: large;
+}
+
+.item__price-money::after {
+    content: "（税込）";
+    font-size: large;
+}
+
+.mark {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.star__mark {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type="checkbox"]:checked+label {
+    color: rgb(216, 216, 0);
+}
+
+.star__mark-button {
+    font-size: xx-large;
+    text-align: center;
+    height: 40px;
+}
+
+.star__mark-score {
+    text-align: center;
+}
+
+.comment__mark {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment__mark-button {
+    font-size: xx-large;
+    text-align: center;
+    height: 40px;
+}
+
+.comment__mark-score {
+    text-align: center;
+}
+
+.buy__button {
+    width: 100%;
+}
+
+.buy__button-submit {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    text-align: center;
+    border: none;
+    background-color: #ff5555;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.item__describe {
+    margin-top: 20px;
+}
+
+.describe__title {
+    font-size: x-large;
+    font-weight: bold;
+}
+.describe__area {
+    resize: none;
+    width: 90%;
+    height: 150px;
+    margin-top: 20px;
+    border: none;
+}
+
+.item__information {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.information__title{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.item__category, .item__status {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.item__category-title, .item__status-title {
+    width: 25%;
+    font-weight: bold;
+}
+
+.item__category-content {
+    display: inline;
+    flex-wrap: wrap;
+}
+
+.category__content-list {
+    border-radius: 20px;
+    background-color: #d9d9d9;
+    padding: 1px 20px;
+}
+
+.item__status-content {
+    padding: 1px 20px;
+}
+
+.comment {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.comment__title-left, .comment__title-count {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.other__comment {
+    margin-top: 20px;
+}
+
+.comment__user {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+}
+
+.comment__user-icon {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: #d9d9d9;
+    border-radius: 50%;
+}
+
+.comment__user-name {
+    margin-left: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.other__comment-content {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+}
+
+.other__comment-textarea {
+    resize: none;
+    width: 100%;
+    border: none;
+    background-color: #d9d9d9;
+}
+
+.write__comment {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.write__comment-title {
+    font-size: large;
+    font-weight: bold;
+}
+
+.write__comment-content {
+    width: 100%;
+}
+
+.write__comment-textarea {
+    width: 100%;
+    height: 150px;
+    font: large;
+}
+
+.write__comment-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.comment__button-submit {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-color: #ff5555;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}

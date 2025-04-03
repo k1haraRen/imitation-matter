@@ -1,0 +1,133 @@
+.admin {
+    width: 100%;
+}
+
+.user {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.user::before {
+    content: "";
+    display: block;
+    padding-top: 20%;
+}
+
+.user-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.my-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5%;
+    width: 30%;
+}
+
+.my-icon__pic {
+    display: flex;
+    width: 35%;
+    background: #d9d9d9;
+    border-radius: 50%;
+}
+
+.my-icon__pic::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.user-name {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.icon-select {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.icon-select__button {
+    padding: 5px 30px;
+    background: none;
+    border-radius: 5px;
+    border-color: #ff5555;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #ff5555;
+}
+
+.list {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.list::before {
+    content: "";
+    display: block;
+    padding-top: 5%;
+}
+
+.list__item {
+    display: flex;
+    justify-content: flex-end;
+    width: 35%;
+}
+
+.suggest {
+    margin-right: 10%;
+}
+
+.my-list,
+.suggest {
+    font-size: 2vw;
+    border: none;
+    background: none;
+}
+
+.item__list-all {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+
+.item__list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.item {
+    width: 25%;
+}
+
+.picture {
+    display: flex;
+    width: 90%;
+    margin-top: 10%;
+}
+
+.item-pic {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #d0d0d0;
+}
+
+
+.item-name__space {
+    margin-top: 5px;
+}
