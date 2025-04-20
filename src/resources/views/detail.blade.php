@@ -6,13 +6,13 @@
     <div class="detail">
         <div class="detail__content">
             <div class="detail__pic">
-                <img src="" alt="商品画像" class="detail__item-pic">
+                <img src="{{ asset('storage/item_image/' . $item->item_image) }}" alt="商品画像" class="detail__item-pic">
             </div>
             <div class="detail__content-item">
-                <div class="item__name">商品名がここに入る</div>
-                <div class="item__bland-name">ブランド名</div>
+                <div class="item__name">{{ $item->item_name }}</div>
+                <div class="item__bland-name">{{ $item->brand_name }}</div>
                 <div class="item__price">
-                    <span class="item__price-money">47,000</span>
+                    <span class="item__price-money">{{ $item->price }}</span>
                 </div>
                 <div class="mark">
                     <div class="star__mark">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="item__describe">
                     <div class="describe__title">商品説明</div>
-                    <textarea name="" id="" class="describe__area"></textarea>
+                    <p class="describe__area">{{ $item->text }}</p>
                 </div>
                 <div class="item__information">
                     <div class="information__title">商品の情報</div>
@@ -38,13 +38,14 @@
                         <div class="item__category">
                             <div class="item__category-title">カテゴリー</div>
                             <div class="item__category-content">
-                                <span class="category__content-list">洋服</span>
-                                <span class="category__content-list">メンズ</span>
+                                @foreach ($item->category as $category)
+                                    <span class="category__content-list">{{ $category->content }}</span>
+                                @endforeach
                             </div>
                         </div>
                         <div class="item__status">
                             <div class="item__status-title">商品の状態</div>
-                            <div class="item__status-content">良好</div>
+                            <div class="item__status-content">{{ $item->state->state }}</div>
                         </div>
                     </div>
                 </div>

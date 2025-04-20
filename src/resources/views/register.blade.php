@@ -8,29 +8,32 @@
             <div class="register__title">
                 <h1>会員登録</h1>
             </div>
-            <div class="register__content">
-                <div class="register__content-item">
-                    <div class="content-item__title">ユーザー名</div>
-                    <input type="text" class="content-item__input">
+            <form action="/register" method="post">
+                @csrf
+                <div class="register__content">
+                    <div class="register__content-item">
+                        <div class="content-item__title">ユーザー名</div>
+                        <input type="text" class="content-item__input" name="name" value="{{ old('name') }}">
+                    </div>
+                    <div class="register__content-item">
+                        <div class="content-item__title">メールアドレス</div>
+                        <input type="text" class="content-item__input" name="email" value="{{ old('email') }}">
+                    </div>
+                    <div class="register__content-item">
+                        <div class="content-item__title">パスワード</div>
+                        <input type="text" class="content-item__input" name="password">
+                    </div>
+                    <div class="register__content-item">
+                        <div class="content-item__title">確認用パスワード</div>
+                        <input type="text" class="content-item__input" name="password_confirmation">
+                    </div>
                 </div>
-                <div class="register__content-item">
-                    <div class="content-item__title">メールアドレス</div>
-                    <input type="text" class="content-item__input">
+                <div class="content-button">
+                    <button type="submit" class="content-button__submit">登録する</button>
                 </div>
-                <div class="register__content-item">
-                    <div class="content-item__title">パスワード</div>
-                    <input type="text" class="content-item__input">
-                </div>
-                <div class="register__content-item">
-                    <div class="content-item__title">確認用パスワード</div>
-                    <input type="text" class="content-item__input">
-                </div>
-            </div>
-            <div class="content-button">
-                <button type="button" class="content-button__submit">登録する</button>
-            </div>
+            </form>
             <div class="url">
-                <a href="" class="login__url">ログインはこちら</a>
+                <a href="{{ route('login') }}" class="login__url">ログインはこちら</a>
             </div>
         </div>
     </div>
