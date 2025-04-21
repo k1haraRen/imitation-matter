@@ -28,7 +28,9 @@ Route::get('/mail', [UserController::class, 'mail']);
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{id}', [ItemController::class, 'detail'])->name('detail');
-Route::get('/mypage', [ItemController::class, 'mypage']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/mypage', [ItemController::class, 'mypage'])->name('mypage');
+});
 Route::get('/edit', [ItemController::class, 'edit']);
 Route::get('/sell', [ItemController::class, 'sell']);
 Route::get('/purchase', [ItemController::class, 'purchase']);

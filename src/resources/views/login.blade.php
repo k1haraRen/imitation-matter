@@ -14,14 +14,20 @@
                     <div class="register__content-item">
                         <div class="content-item__title">メールアドレス</div>
                         <input type="text" class="content-item__input" name="email" value="{{ old('email') }}">
+                        @error('email')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="register__content-item">
                         <div class="content-item__title">パスワード</div>
                         <input type="text" class="content-item__input" name="password">
+                        @error('password')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="content-button">
-                    <button type="button" class="content-button__submit">登録する</button>
+                    <button type="submit" class="content-button__submit">ログインする</button>
                 </div>
             </form>
             <div class="url">

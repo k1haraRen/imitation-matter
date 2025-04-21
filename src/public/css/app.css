@@ -21,7 +21,7 @@ body {
 
 .header__light {
     display: inline-block;
-    width: 35%;
+    width: 40%;
 }
 
 .header__icon-coachtech {
@@ -42,16 +42,31 @@ body {
 }
 
 .header__item {
-    margin-right: 7%;
+    margin-right: 10px;
+}
+
+.header__item::marker {
+    content: "";
 }
 
 .header__login {
+    padding: auto 0px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    font-size: 1.5vw;
+}
+
+.login__button {
+    background-color: black;
+    text-decoration: none;
     color: #fff;
     font-size: 1.5vw;
 }
 
 .header__mypage {
     color: #fff;
+    text-decoration: none;
     font-size: 1.5vw;
 }
 
@@ -60,4 +75,10 @@ body {
     font-size: 1.5vw;
     padding: 8px 15px;
     border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
 }

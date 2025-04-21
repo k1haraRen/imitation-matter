@@ -25,11 +25,22 @@
                     </div>
                     <div class="header__light">
                         <ul class="header__list">
+                            <nav>
+                                @auth
+                                    <form action="/logout" method="post">
+                                        @csrf
+                                        <li class="header__item">
+                                            <button type="submit" class="header__login">ログアウト</button>
+                                        </li>
+                                    </form>
+                                @else
+                                    <li class="header__item">
+                                        <a href="{{ route('login') }}" class="login__button">ログイン</a>
+                                    </li>
+                                @endauth
+                            </nav>
                             <li class="header__item">
-                                <span class="header__login">ログアウト</span>
-                            </li>
-                            <li class="header__item">
-                                <span class="header__mypage">マイページ</span>
+                                <a href="{{ route('mypage') }}" class="header__mypage">マイページ</a>
                             </li>
                             <li class="header__item">
                                 <span class="header__sell">出品</span>

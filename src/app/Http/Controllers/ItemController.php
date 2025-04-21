@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Item;
@@ -26,7 +27,8 @@ class ItemController extends Controller
 
     public function mypage()
     {
-        return view('mypage');
+        $user = Auth::user();
+        return view('mypage', compact('user'));
     }
 
     public function edit()

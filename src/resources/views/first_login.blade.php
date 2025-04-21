@@ -8,7 +8,7 @@
             <div class="register__title">
                 <h1>プロフィール設定</h1>
             </div>
-            <form action="{{ route('first_login.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('first_login.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="icon">
                     <div class="my-icon">
@@ -16,7 +16,7 @@
                     </div>
                     <div class="icon-select">
                         <label for="select__file" class="icon-select__button">
-                            <input type="file" id="select__file" accept="image/*" class="icon-select__input">
+                            <input type="file" id="select__file" accept="image/*" class="icon-select__input" name="icon_url">
                             画像を選択する
                         </label>
                     </div>
@@ -24,23 +24,44 @@
                 <div class="register__content">
                     <div class="register__content-item">
                         <div class="content-item__title">ユーザー名</div>
-                        <input type="text" class="content-item__input">
+                        <input type="text" class="content-item__input" name="name">
+                        @error('name')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="register__content-item">
                         <div class="content-item__title">郵便番号</div>
-                        <input type="text" class="content-item__input">
+                        <input type="text" class="content-item__input" name="postcode">
+                        @error('postcode')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="register__content-item">
                         <div class="content-item__title">住所</div>
-                        <input type="text" class="content-item__input">
+                        <input type="text" class="content-item__input" name="address">
+                        @error('address')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="register__content-item">
                         <div class="content-item__title">建物名</div>
-                        <input type="text" class="content-item__input">
+                        <input type="text" class="content-item__input" name="building">
+                        @error('building')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="content-button">
-                    <button type="button" class="content-button__submit">登録する</button>
+                    <button type="submit" class="content-button__submit">登録する</button>
                 </div>
             </form>
         </div>
