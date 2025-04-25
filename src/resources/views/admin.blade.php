@@ -6,25 +6,27 @@
     <div class="admin">
         <div class="list">
             <div class="list__item">
-                <button class="suggest">おすすめ</button>
-                <button class="my-list">マイリスト</button>
+                <button class="suggest" onclick="fetchItems('suggest')">おすすめ</button>
+                <button class="my-list" onclick="fetchItems('mylist')">マイリスト</button>
             </div>
         </div>
-        <div class="item__list-all">
-            <div class="item__list">
-                @foreach ($items as $item)
-                <div class="item">
-                    <div class="picture">
-                        <a href="{{ route('detail', ['id' => $item->id]) }}" class="item__detail">
-                            <img src="{{ asset('storage/item_image/' . $item->item_image) }}" alt="商品画像" class="item-pic">
-                        </a>
-                    </div>
-                    <div class="item-name__space">
-                        <span class="item-name">{{ $item['item_name'] }}</span>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+        <div class="item__list-all" id="itemContainer">
+            @include('components.item_list', ['items' => $items])
         </div>
     </div>
+
+    <script>
+        function fetchItems(type) {
+            fetch(`/items/${type}`, {
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('itemContainer').innerHTML = html;
+                })
+                .catch(err => console.error('読み込みエラー:', err));
+        }
+    </script>
 @endsection

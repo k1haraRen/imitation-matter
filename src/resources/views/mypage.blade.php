@@ -7,13 +7,13 @@
         <div class="user">
             <div class="user-item">
                 <div class="my-icon">
-                    <img src="" alt="" class="my-icon__pic">
+                    <img src="{{ asset('storage/user_icon/' . $user->icon_url) }}" alt="" class="my-icon__pic">
                 </div>
                 <div class="name">
-                    <span class="user-name">ユーザー名</span>
+                    <span class="user-name">{{ $user->name }}</span>
                 </div>
                 <div class="icon-select">
-                    <button type="button" class="icon-select__button">プロフィールを編集</button>
+                    <a href="{{ route('edit') }}" class="icon-select__button">プロフィールを編集</a>
                 </div>
             </div>
         </div>

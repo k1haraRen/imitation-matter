@@ -21,6 +21,7 @@
     width: 90%;
     aspect-ratio: 1;
     background: #d9d9d9;
+    object-fit: cover;
     font-size: 30px;
 }
 

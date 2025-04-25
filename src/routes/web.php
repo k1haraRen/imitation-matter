@@ -26,11 +26,22 @@ Route::middleware('auth')->group(function () {
 Route::get('/first', [UserController::class, 'first']);
 Route::get('/mail', [UserController::class, 'mail']);
 
-Route::get('/', [ItemController::class, 'index']);
+
+Route::get('/', [ItemController::class, 'index'])->name('admin');
+Route::get('/items/suggest', [ItemController::class, 'suggest'])->name('suggest');
+Route::get('/items/mylist', [ItemController::class, 'mylist']);
+
 Route::get('/item/{id}', [ItemController::class, 'detail'])->name('detail');
+Route::post('/favorite/{item}', [ItemController::class, 'toggle'])->name('favorite.toggle');
+Route::post('/comment/{item}', [ItemController::class, 'store'])->middleware('auth')->name('comment.store');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [ItemController::class, 'mypage'])->name('mypage');
+    Route::get('/edit', [ItemController::class, 'edit'])->name('edit');
+    Route::post('/edit', [ItemController::class, 'update'])->name('update');
 });
-Route::get('/edit', [ItemController::class, 'edit']);
-Route::get('/sell', [ItemController::class, 'sell']);
+
+Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
+Route::post('/sell', [ItemController::class, 'storeSell'])->middleware('auth')->name('items.store');
+
 Route::get('/purchase', [ItemController::class, 'purchase']);

@@ -18,34 +18,36 @@
             <div class="header__whole">
                 <div class="header__inner">
                     <div class="header__icon">
-                        <img class="header__icon-coachtech" src="{{ asset('img/logo.svg') }}" alt="">
+                        <a href="{{ route('admin') }}">
+                            <img class="header__icon-coachtech" src="{{ asset('img/logo.svg') }}" alt="">
+                        </a>
                     </div>
                     <div class="header__search">
                         <input type="text" class="header__search-input">
                     </div>
                     <div class="header__light">
-                        <ul class="header__list">
-                            <nav>
+                        <nav>
+                            <ul class="header__list">
                                 @auth
                                     <form action="/logout" method="post">
                                         @csrf
                                         <li class="header__item">
-                                            <button type="submit" class="header__login">ログアウト</button>
+                                            <button type="submit" class="header__logout">ログアウト</button>
                                         </li>
                                     </form>
+                                    <li class="header__item">
+                                        <a href="{{ route('mypage') }}" class="header__mypage">マイページ</a>
+                                    </li>
+                                    <li class="header__item">
+                                        <a href="{{ route('sell') }}" class="header__sell">出品</a>
+                                    </li>
                                 @else
                                     <li class="header__item">
                                         <a href="{{ route('login') }}" class="login__button">ログイン</a>
                                     </li>
                                 @endauth
-                            </nav>
-                            <li class="header__item">
-                                <a href="{{ route('mypage') }}" class="header__mypage">マイページ</a>
-                            </li>
-                            <li class="header__item">
-                                <span class="header__sell">出品</span>
-                            </li>
-                        </ul>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

@@ -27,12 +27,12 @@ class User extends Authenticatable
         return $this->hasMany(Item::class);
     }
 
-    public function comment()
+    public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsToMany(Comment::class, 'comment_user_item')->withTimestamps();
     }
 
-    public function favorite()
+    public function favorites()
     {
         return $this->belongsToMany(Item::class, 'favorites');
     }

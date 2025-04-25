@@ -18,7 +18,9 @@
             <div class="header__whole">
                 <div class="header__inner">
                     <div class="header__icon">
-                        <img class="header__icon-coachtech" src="{{ asset('img/logo.svg') }}" alt="">
+                        <a href="{{ route('admin') }}">
+                            <img class="header__icon-coachtech" src="{{ asset('img/logo.svg') }}" alt="">
+                        </a>
                     </div>
                     <div class="header__search">
                     </div>

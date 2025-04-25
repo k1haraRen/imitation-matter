@@ -13,7 +13,11 @@
 .sell__title {
     display: flex;
     justify-content: center;
-    margin: 20px auto;
+    margin: 1.5vw auto;
+}
+
+h1 {
+    font-size: 2.5vw;
 }
 
 .sell__pic {
@@ -29,18 +33,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
-    height: 200px;
+    aspect-ratio: 3/1;
+}
+
+.pic__preview {
+    width: 100%;
+    aspect-ratio: 3/1;
+    object-fit: contain;
     border: 1px solid #d9d9d9;
 }
 
 .pic__select-button {
-    height: 40px;
-    padding: 5px 20px;
+    padding: 1% 4%;
     background: none;
     border-radius: 7px;
     border: 2px solid #ff5555;
-    font-size: large;
+    text-align: center;
+    font-size: 1.5vw;
     font-weight: bold;
     color: #ff5555;
 }
@@ -58,11 +69,12 @@
 }
 
 .item__detail-title {
-    font-size: 23px;
+    font-size: 1.8vw;
 }
 
 .item__category {
     width: 100%;
+    aspect-ratio: 3/1;
 }
 
 .item__category-title {
@@ -83,16 +95,18 @@ input[type="checkbox"]:checked + label {
 .category__item-label {
     display: block;
     float: left;
-    margin: 10px 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 1% 1%;
+    padding-left: 3%;
+    padding-right: 3%;
     color: #ff5555;
     text-align: center;
-    line-height: 30px;
+    line-height: 180%;
     cursor: pointer;
     border: 2px solid #ff5555;
     border-radius: 20px;
     background-color: #fff;
+    font-size: 1.3vw;
+    font-weight: bold;
 }
 
 .item__status {
@@ -108,7 +122,7 @@ input[type="checkbox"]:checked + label {
 .item__status-select {
     margin-top: 5px;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 11/1;
 }
 
 .status__select-button {
@@ -138,20 +152,20 @@ input[type="checkbox"]:checked + label {
 }
 
 .content-item__title {
-    font-size: large;
+    font-size: 1.5vw;
     font-weight: bold;
 }
 
 .content-item__input {
     width: 100%;
-    height: 80%;
-    font-size: large;
+    aspect-ratio: 11/1;
+    font-size: 1.5vw;
 }
 
 .content-item__textarea {
     width: 100%;
-    height: 120%;
-    font-size: large;
+    aspect-ratio: 5/1;
+    font-size: 1.3vw;
 }
 
 .content__button {
@@ -166,12 +180,12 @@ input[type="checkbox"]:checked + label {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    margin-top: 40px;
+    aspect-ratio: 13/1;
+    margin-top: 1vw;
     border: none;
-    line-height: 15px;
+    line-height: 1%;
     background-color: #ff5555;
     color: #fff;
-    font-size: 23px;
+    font-size: 1.8vw;
     font-weight: bold;
 }

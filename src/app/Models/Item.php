@@ -34,13 +34,13 @@ class Item extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function favorite()
+    public function favoritedBy()
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
 
-    public function comment()
+    public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsToMany(Comment::class, 'comment_user_item')->withTimestamps();
     }
 }

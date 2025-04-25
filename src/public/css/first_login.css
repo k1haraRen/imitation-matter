@@ -32,14 +32,10 @@
     position: relative;
     display: inline-block;
     width: 100%;
+    aspect-ratio: 1/1;
     background: #d9d9d9;
+    object-fit: cover;
     border-radius: 50%;
-}
-
-.my-icon__pic::before {
-    content: "";
-    display: block;
-    padding-top: 100%;
 }
 
 .icon-select {

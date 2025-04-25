@@ -51,15 +51,6 @@
                         @enderror
                     </div>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="content-button">
                     <button type="submit" class="content-button__submit">登録する</button>
                 </div>

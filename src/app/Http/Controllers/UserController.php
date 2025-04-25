@@ -13,12 +13,11 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        // すでに初回ログイン済みならホームへ
         if (!$user->is_first_login) {
             return redirect()->route('home');
         }
 
-        return view('first_login'); // resources/views/first_login.blade.php
+        return view('first_login');
     }
 
     public function store(Request $request)

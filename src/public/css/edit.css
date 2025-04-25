@@ -19,6 +19,7 @@
 .icon {
     display: flex;
     align-items: center;
+    width: 100%;
     margin-bottom: 40px;
 }
 
@@ -31,14 +32,12 @@
     position: relative;
     display: inline-block;
     width: 100%;
+    aspect-ratio: 1/1;
     background: #d9d9d9;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
     border-radius: 50%;
-}
-
-.my-icon__pic::before {
-    content: "";
-    display: block;
-    padding-top: 100%;
 }
 
 .icon-select {
@@ -66,19 +65,19 @@
 }
 
 .register__content-item {
-    margin-bottom: 90px;
+    margin-bottom: 70px;
     width: 100%;
 }
 
 .content-item__title {
-    font-size: large;
+    font-size: 1.5vw;
     font-weight: bold;
 }
 
 .content-item__input {
     width: 100%;
-    height: 100%;
-    font-size: large;
+    height: 50px;
+    font-size: 1.5vw;
 }
 
 .content__button {
@@ -93,7 +92,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90%;
+    height: 35px;
     margin-top: 40px;
     border: none;
     line-height: 15px;
