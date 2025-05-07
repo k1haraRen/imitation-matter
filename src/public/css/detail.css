@@ -122,6 +122,15 @@ input[type="checkbox"]:checked+label {
     font-weight: bold;
 }
 
+.sold {
+    text-align: center;
+    background-color: #ff4d4f;
+    color: white;
+    padding: 4px 8px;
+    font-size: 1.3vw;
+    font-weight: bold;
+}
+
 .item__describe {
     margin-top: 20px;
 }

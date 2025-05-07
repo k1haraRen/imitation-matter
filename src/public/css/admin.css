@@ -75,3 +75,14 @@
 .item-name__space {
     margin-top: 5px;
 }
+
+.sold-label {
+    display: inline-block;
+    background-color: #ff4d4f;
+    color: white;
+    padding: 4px 8px;
+    font-size: 1.1vw;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-left: 10px;
+}

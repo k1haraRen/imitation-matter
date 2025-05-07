@@ -25,9 +25,18 @@
                         <div class="comment__mark-score">{{ $item->comments->count() }}</div>
                     </div>
                 </div>
-                <div class="buy__button">
-                    <button class="buy__button-submit">購入手続きへ</button>
-                </div>
+                @if (!$item->sold)
+                    <div class="buy__button">
+                        <a href="{{ route('purchase.edit', $item) }}">
+                            <button class="buy__button-submit">購入手続きへ</button>
+                        </a>
+                    </div>
+                @endif
+                @if ($item->sold)
+                    <div class="sold">
+                        sold
+                    </div>
+                @endif
                 <div class="item__describe">
                     <div class="describe__title">商品説明</div>
                     <p class="describe__area">{{ $item->text }}</p>

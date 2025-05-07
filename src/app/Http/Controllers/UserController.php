@@ -14,7 +14,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         if (!$user->is_first_login) {
-            return redirect()->route('home');
+            return redirect()->route('admin');
         }
 
         return view('first_login');

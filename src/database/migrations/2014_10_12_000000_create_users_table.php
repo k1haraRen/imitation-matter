@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('building')->nullable();
             $table->string('icon_url')->nullable();
+            $table->boolean('is_first_login')->default(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });

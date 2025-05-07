@@ -47,7 +47,7 @@
                         <span class="status__title">商品の状態</span>
                     </div>
                     <div class="item__status-select">
-                        <select name="state_id" id="" class="status__select-button" name="state_id">
+                        <select name="state_id" id="" class="status__select-button">
                             <option value="" selected>選択してください</option>
                             @foreach ($states as $state)
                                 <option value="{{ $state->id }}">{{ $state->state }}</option>

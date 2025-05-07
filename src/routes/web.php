@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,13 +56,14 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
 Route::post('/sell', [ItemController::class, 'storeSell'])->middleware('auth')->name('items.store');
 
-Route::get('/purchase', [ItemController::class, 'purchase']);
+Route::get('/purchase/{item}', [ItemController::class, 'purchaseEdit']
+)->name('purchase.edit')->middleware('auth');
+Route::post('/purchase/card', [PurchaseController::class, 'purchaseCard'])->name('purchase.card');
+Route::post('/purchase/konbini', [PurchaseController::class, 'purchaseKonbini'])->name('purchase.konbini');
+Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success'])->name('success');
 
-Route::get('/send-test-mail', function () {
-    Mail::raw('テストメールの本文でございます。', function ($message) {
-        $message->to('test@example.com')
-            ->subject('テストメールでございます');
-    });
 
-    return 'メールを送信しましたわ！';
+Route::middleware('auth')->group(function () {
+    Route::get('/address/{item_id}', [ItemController::class, 'addressEdit'])->name('address.edit');
+    Route::post('/address/update', [ItemController::class, 'addressUpdate'])->name('address.update');
 });

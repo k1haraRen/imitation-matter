@@ -8,6 +8,9 @@
             </div>
             <div class="item-name__space">
                 <span class="item-name">{{ $item['item_name'] }}</span>
+                @if($item->sold)
+                    <span class="sold-label">sold</span>
+                @endif
             </div>
         </div>
     @endforeach

@@ -161,8 +161,35 @@ class ItemController extends Controller
         return redirect()->route('admin');
     }
 
-    public function purchase()
+    public function purchaseEdit(Item $item)
     {
-        return view('purchase');
+        $user = Auth::user();
+        return view('purchase', compact('item', 'user'));
+    }
+
+    public function addressEdit($item_id)
+    {
+        session(['current_item_id' => $item_id]);
+
+        $user = Auth::user();
+        return view('address', compact('user'));
+    }
+
+    public function addressUpdate(Request $request)
+    {
+        $request->validate([
+            'postcode' => 'required|string|max:10',
+            'address' => 'required|string|max:255',
+            'building' => 'nullable|string|max:255',
+        ]);
+
+        $user = Auth::user();
+        $user->postcode = $request->postcode;
+        $user->address = $request->address;
+        $user->building = $request->building;
+        $user->save();
+
+        $itemId = session('current_item_id');
+        return redirect()->route('purchase.edit', ['item' => $itemId]);
     }
 }

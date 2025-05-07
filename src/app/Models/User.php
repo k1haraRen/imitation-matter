@@ -23,6 +23,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'icon_url',
     ];
 
+    public function getFormattedPostcodeAttribute()
+    {
+        return substr($this->postcode, 0, 3) . '-' . substr($this->postcode, 3);
+    }
+
     public function item()
     {
         return $this->hasMany(Item::class);
