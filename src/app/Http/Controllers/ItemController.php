@@ -18,9 +18,15 @@ class ItemController extends Controller
         return view('admin', compact('items'));
     }
 
-    public function suggest()
+    public function suggest(Request $request)
     {
-        $items = Item::where('user_id', '!=', Auth::id())->get();
+        $keyword = $request->input('keyword');
+        $items = Item::where('user_id', '!=', auth()->id())
+            ->when($keyword, function ($query, $keyword) {
+                return $query->where('item_name', 'like', "%{$keyword}%");
+            })
+            ->get();
+
         return view('components.item_list', compact('items'));
     }
 

@@ -16,8 +16,31 @@
     </div>
 
     <script>
+        const keywordInput = document.getElementById('searchKeyword');
+
+        keywordInput.addEventListener('keyup', function () {
+            const keyword = keywordInput.value;
+            const type = window.currentType || 'suggest';
+            const url = `/items/${type}?keyword=${encodeURIComponent(keyword)}`;
+
+            fetch(url, {
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('itemContainer').innerHTML = html;
+                })
+                .catch(err => console.error('読み込みエラー:', err));
+        });
+
         function fetchItems(type) {
-            fetch(`/items/${type}`, {
+            window.currentType = type;
+            const keyword = document.querySelector('input[name="keyword"]').value;
+            const url = `/items/${type}?keyword=${encodeURIComponent(keyword)}`;
+
+            fetch(url, {
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                 }

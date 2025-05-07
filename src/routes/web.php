@@ -20,10 +20,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/first_login', [UserController::class, 'firstLoginForm'])->name('first_login.form');
     Route::post('/first_login', [UserController::class, 'store'])->name('first_login.store');
 
-    // トップページ（ログイン後の通常画面）
     Route::get('/', [ItemController::class, 'index'])->name('home');
 });
 Route::get('/first', [UserController::class, 'first']);
+Route::get('/mail_check', function () {
+    return view('mail_check');
+})->middleware('auth');
+Route::post('/email/check-verified', function () {
+    $user = Auth::user();
+
+    if ($user->hasVerifiedEmail()) {
+        return redirect('/first_login');
+    }
+
+    return back()->with('error', 'メール認証がまだ完了していません。');
+})->middleware(['auth'])->name('email.checkVerified');
 Route::get('/mail', [UserController::class, 'mail']);
 
 
@@ -45,3 +56,12 @@ Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
 Route::post('/sell', [ItemController::class, 'storeSell'])->middleware('auth')->name('items.store');
 
 Route::get('/purchase', [ItemController::class, 'purchase']);
+
+Route::get('/send-test-mail', function () {
+    Mail::raw('テストメールの本文でございます。', function ($message) {
+        $message->to('test@example.com')
+            ->subject('テストメールでございます');
+    });
+
+    return 'メールを送信しましたわ！';
+});

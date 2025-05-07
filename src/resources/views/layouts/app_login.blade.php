@@ -23,7 +23,9 @@
                         </a>
                     </div>
                     <div class="header__search">
-                        <input type="text" class="header__search-input">
+                        <form onsubmit="return false;">
+                            <input type="text" name="keyword" class="header__search-input" value="{{ request('keyword') }}" id="searchKeyword">
+                        </form>
                     </div>
                     <div class="header__light">
                         <nav>
