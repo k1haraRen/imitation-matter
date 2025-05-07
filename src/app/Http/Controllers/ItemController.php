@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Models\Comment;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Purchase;
 
 class ItemController extends Controller
 {
@@ -81,6 +82,20 @@ class ItemController extends Controller
     {
         $user = Auth::user();
         return view('mypage', compact('user'));
+    }
+
+    public function myItems()
+    {
+        $items = Item::where('user_id', auth()->id())->get();
+        return response()->json($items);
+    }
+
+    public function purchasedItems()
+    {
+        $items = Item::whereHas('purchases', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->get();
+        return response()->json($items);
     }
 
     public function edit()

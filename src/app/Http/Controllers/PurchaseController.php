@@ -7,6 +7,7 @@ use Stripe\Checkout\Session;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Purchase;
 
 class PurchaseController extends Controller
 {
@@ -71,6 +72,14 @@ class PurchaseController extends Controller
     public function success(Request $request)
     {
         $item = Item::findOrFail($request->item_id);
+
+        $user = auth()->user();
+
+        Purchase::create([
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+        ]);
+
 
         if ($item->sold == false) {
             $item->sold = true;

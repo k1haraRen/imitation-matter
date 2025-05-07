@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [ItemController::class, 'mypage'])->name('mypage');
     Route::get('/edit', [ItemController::class, 'edit'])->name('edit');
     Route::post('/edit', [ItemController::class, 'update'])->name('update');
+    Route::get('/mypage/items', [ItemController::class, 'myItems'])->name('mypage.my_items');
+    Route::get('/mypage/purchases', [ItemController::class, 'purchasedItems'])->name('mypage.purchased_items');
 });
 
 Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
