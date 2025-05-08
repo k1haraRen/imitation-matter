@@ -81,21 +81,24 @@ class ItemController extends Controller
     public function mypage()
     {
         $user = Auth::user();
-        return view('mypage', compact('user'));
+        $items = Item::where('user_id', $user->id)->get();
+
+        return view('mypage', compact('user', 'items'));
     }
 
-    public function myItems()
+    public function getItems($type)
     {
-        $items = Item::where('user_id', auth()->id())->get();
-        return response()->json($items);
-    }
+        $user = auth()->user();
 
-    public function purchasedItems()
-    {
-        $items = Item::whereHas('purchases', function ($query) {
-            $query->where('user_id', auth()->id());
-        })->get();
-        return response()->json($items);
+        if ($type === 'selling') {
+            $items = Item::where('user_id', $user->id)->get();
+        } elseif ($type === 'purchased') {
+            $items = Purchase::where('user_id', $user->id)->with('item')->get()->pluck('item');
+        } else {
+            return response('', 400);
+        }
+
+        return view('components.item_list', ['items' => $items]);
     }
 
     public function edit()

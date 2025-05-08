@@ -19,57 +19,31 @@
         </div>
         <div class="list">
             <div class="list__item">
-                <button onclick="loadItems('my')">出品した商品</button>
-                <button onclick="loadItems('purchased')">購入した商品</button>
+                <button onclick="fetchMyItems('selling')" class="switch__button">出品した商品</button>
+                <button onclick="fetchMyItems('purchased')" class="switch__button">購入した商品</button>
             </div>
         </div>
         <div class="item__list-all">
-            <div class="item__list">
-                <div class="item">
-                    <div class="picture">
-                        <img src="" alt="商品画像" class="item-pic">
-                    </div>
-                    <div class="item-name__space">
-                        <span class="item-name">商品名</span>
-                    </div>
-                </div>
+            <div id="myItemContainer">
+                @include('components.item_list', ['items' => $items])
             </div>
         </div>
     </div>
 
     <script>
-        async function loadItems(type) {
-            let url = '';
-            if (type === 'my') {
-                url = '{{ route('mypage.my_items') }}';
-            } else {
-                url = '{{ route('mypage.purchased_items') }}';
-            }
+        function fetchMyItems(type) {
+            const url = `/mypage/items/${type}`;
 
-            const res = await fetch(url);
-            const items = await res.json();
-
-            const container = document.getElementById('item-list');
-            container.innerHTML = '';
-
-            if (items.length === 0) {
-                container.innerHTML = '<p>商品がありません。</p>';
-                return;
-            }
-
-            items.forEach(item => {
-                const html = `
-                    <div class="item-card">
-                        <h3>${item.item_name}</h3>
-                        <p>¥${item.price}</p>
-                        <img src="/storage/item_image/${item.image}" width="150">
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
+            fetch(url, {
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('myItemContainer').innerHTML = html;
+                })
+                .catch(err => console.error('読み込みエラー:', err));
         }
-
-        // 初期表示：出品した商品
-        loadItems('my');
     </script>
 @endsection
