@@ -84,6 +84,9 @@
                             <div class="write__comment-button">
                                 <button type="submit" class="comment__button-submit">コメントを送信する</button>
                             </div>
+                            @error('comment')
+                                <div class="error-message">{{ $message }}</div>
+                            @enderror
                         </form>
                     </div>
                 </div>
